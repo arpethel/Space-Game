@@ -4,23 +4,34 @@ namespace Projects
 {
     class MainClass
     {
-        static char[,] screen = new char[9, 9];
-        static string display = "";
-        static int critterX = 4;
-        static int shipX = 4;
+        public static int BufferHeight { get; set; }
 
-
-        static void ViewDisplay()
+        static void Spaceship()
         {
+            String[] Ship;
+            Ship = new string[]
+            {
+                "   _ ^ _   ",
+                "<<||ooo||>>",
+                "  ||ooo||  ",
+                "    ---    ",
+                "    VvV    "
+            };
 
-            Console.Clear();
+            foreach (string shipPart in Ship)
+            {
+                Console.WriteLine($"{shipPart}");
+            }
         }
 
-
+        
 
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Spaceship();
+
+            Console.WriteLine("The current buffer height is {0} rows.", Console.BufferHeight);
+            Console.WriteLine("The current buffer width is {0} columns.", Console.BufferWidth);
         }
     }
 }
