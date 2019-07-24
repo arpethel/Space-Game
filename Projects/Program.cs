@@ -9,12 +9,14 @@ namespace Projects
 
         public static void Main(string[] args)
         {
+
             FieldDisplay.DisplaySetUp();
             FieldDisplay.DisplayOutput();
 
             SpaceShip.shipLocation = new string[24, 9];
             SpaceShip.view();
-            
+            User.UserControl();
+
 
             //Console.WriteLine("The current buffer height is {0} rows.", Console.BufferHeight);
             //Console.WriteLine("The current buffer width is {0} columns.", Console.BufferWidth);

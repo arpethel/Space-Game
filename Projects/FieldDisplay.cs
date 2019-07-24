@@ -27,6 +27,7 @@ namespace Projects
 
                 fieldDisplay[j, 17] = "|";
             }
+            //Console.Clear();
         }
 
         public static void DisplayOutput()
@@ -35,11 +36,14 @@ namespace Projects
             int colLeng = fieldDisplay.GetLength(0);
             for (int j = 0; j < colLeng; j++)
             {
+
+                //Console.Clear(); DOESN'T WORK HERE
                 for (int i = 0; i < rowLeng; i++)
                 {
                     Console.Write(string.Format("{0} ", fieldDisplay[j, i]));
                 }
                 Console.WriteLine();
+                //Console.Clear(); DOESN'T WORK HERE
             }
         }
     }

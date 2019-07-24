@@ -28,14 +28,35 @@ namespace Projects
 
         // SHIP MOVEMENT
 
-        public void moveRight()
+        public static void moveRight()
         {
             ++xAxis;
         }
 
-        public void moveLeft()
+        public static void moveLeft()
         {
             --xAxis;
+        }
+
+        public static void shoot()
+        {
+            String[] Ship;
+            Ship = new string[]
+            {
+                "     :     ",
+                "     :     ",
+                "   _ ^ _   ",
+                "<<||ooo||>>",
+                "  ||ooo||  ",
+                "    ---    ",
+                "    VvV    "
+            };
+
+            foreach (string shipPart in Ship)
+            {
+                Console.WriteLine($"{shipPart}");
+            }
+
         }
     }
 }
