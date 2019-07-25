@@ -37,6 +37,7 @@
     <Compile Include="SpaceShip.cs" />
     <Compile Include="FieldDisplay.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="Enemy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

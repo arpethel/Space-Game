@@ -4,29 +4,47 @@ namespace Projects
 {
     class MainClass
     {
-        //public static int BufferHeight { get; set; }
-        //public static int BufferWidth { get; set; } DO WE NEED THIS ONE?
+        // Game Loop variable
+        public static bool truther = true;
+
+        // User position on screen
+        //public static int xPos = 35;
+        //public static int yPos = 39;
+
+        // Used to create random x position for the enemies
+        public static Random rand = new Random();
+
+
+        //public static int xPosEn;
+        //public static int yPosEn = 2;
+
+        public static int bullXpos;
+        public static int bullYpos;
 
         public static void Main(string[] args)
         {
+            //Sets the default console window height and width
+            Console.WindowHeight = 42;
+            Console.WindowWidth = 75;
 
-            FieldDisplay.DisplaySetUp();
-            FieldDisplay.DisplayOutput();
+            //game loop for all methods needed in this program
+            do
+            {
 
-            SpaceShip.shipLocation = new string[24, 9];
-            SpaceShip.view();
-            User.UserControl();
+                xPosEn = rand.Next(69);  //gets random number for position of the enemy
+                FieldDisplay.DisplaySetup(); // sets up the screen for the player
+                EnemyMaker();
+                UserControl(); // gets the users input and prints the users character and the enemy
+                Shooter();
+
+            } while (truther);
 
 
-            //Console.WriteLine("The current buffer height is {0} rows.", Console.BufferHeight);
-            //Console.WriteLine("The current buffer width is {0} columns.", Console.BufferWidth);
+
+            //SpaceShip.shipLocation = new string[24, 9];
+            //SpaceShip.view();
+            //User.UserControl();
+
         }
     }
 }
-
-
-
-
-
-// Define the location of the field display
-// Set the location of the spaceship at half the field display's length
