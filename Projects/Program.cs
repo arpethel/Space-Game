@@ -5,7 +5,7 @@ namespace Projects
     class MainClass
     {
         // Game Loop variable
-        public static bool truther = true;
+        //public static bool truther = true;
 
         // User position on screen
         //public static int xPos = 35;
@@ -31,13 +31,13 @@ namespace Projects
             do
             {
 
-                xPosEn = rand.Next(69);  //gets random number for position of the enemy
+                Enemy.xPosEn = rand.Next(69);  //gets random number for position of the enemy
                 FieldDisplay.DisplaySetup(); // sets up the screen for the player
-                EnemyMaker();
-                UserControl(); // gets the users input and prints the users character and the enemy
+                Enemy.EnemyMaker();
+                User.UserControl(); // gets the users input and prints the users character and the enemy
                 Shooter();
 
-            } while (truther);
+            } while (FieldDisplay.truther);
 
 
 

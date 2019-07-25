@@ -3,6 +3,7 @@ namespace Projects
 {
     public class FieldDisplay
     {
+        public static bool truther = true;
         public static int xPos = 35;
         public static int yPos = 39;
 
