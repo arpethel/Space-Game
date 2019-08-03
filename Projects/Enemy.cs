@@ -8,11 +8,11 @@ namespace SpaceGame
     {
         public Enemy()
         {
-            this.XPos = Display.r.Next(Display.xSize - 2) + 1;
+            this.XPos = Display.rand.Next(Display.xSize - 2) + 1;
             this.YPos = 1;
             this.XVel = 0;
             this.YVel = 1;
-            this.Symbol = '*';
+            this.Symbol = 'V';
             this.ObjectType = SpaceObjectType.Enemy;
             this.DisposeFlag = false;
         }

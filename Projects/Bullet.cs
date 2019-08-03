@@ -12,7 +12,7 @@ namespace SpaceGame
             this.YPos = Display.ySize - 1;
             this.XVel = 0;
             this.YVel = -1;
-            this.Symbol = '|';
+            this.Symbol = ':';
             this.ObjectType = SpaceObjectType.Bullet;
             this.DisposeFlag = false;
         }

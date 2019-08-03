@@ -9,6 +9,9 @@ namespace SpaceGame
 
         static void Main(string[] args)
         {
+            Console.WindowHeight = 52;
+            Console.WindowWidth = 75;
+
             Display.AddSpaceObject(new SpaceShip());
             Display.AddSpaceObject(new Enemy());
             Display.InitializeDisplay();
@@ -20,8 +23,6 @@ namespace SpaceGame
                 {
                     switch (Console.ReadKey(true).Key)
                     {
-                        default:
-                            break;
                         case (ConsoleKey.LeftArrow):
                             Display.GetSpaceShip().MoveLeft();
                             break;
@@ -31,7 +32,7 @@ namespace SpaceGame
                         case (ConsoleKey.Spacebar):
                             Display.GetSpaceShip().Shoot();
                             break;
-                        case (ConsoleKey.N):
+                        case (ConsoleKey.Y):
                             Display.Lives = 3;
                             Display.Score = 0;
                             Display.spaceObjects.Clear();
@@ -39,6 +40,8 @@ namespace SpaceGame
                             break;
                         case (ConsoleKey.Escape):
                             return;
+                        default:
+                            break;
                     }
                     if (Display.Lives > 0)
                     {

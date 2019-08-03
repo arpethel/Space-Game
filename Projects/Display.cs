@@ -7,54 +7,54 @@ namespace SpaceGame
 {
     static class Display
     {
-        public const int xSize = 10, ySize = 20;
+        public const int xSize = 73, ySize = 45;
 
         public static char[,] charDisplay = new char[ySize, xSize];
         private static string display = "";
         public static List<SpaceObject> spaceObjects = new List<SpaceObject>();
         public static List<SpaceObject> spaceObjectsToRemove = new List<SpaceObject>();
-        public static Random r = new Random();
+        public static Random rand = new Random();
         public static int Score = 0;
         public static int Lives = 0;
 
-        public static void AddSpaceObject(SpaceObject so)
+        public static void AddSpaceObject(SpaceObject spaceObj)
         {
-            spaceObjects.Insert(0, so);
+            spaceObjects.Insert(0, spaceObj);
         }
 
         public static List<SpaceObject> GetSpaceObjects(SpaceObjectType objectType)
         {
-            return spaceObjects.Where(so => so.ObjectType == objectType).ToList();
+            return spaceObjects.Where(spaceObj => spaceObj.ObjectType == objectType).ToList();
         }
 
 
         public static SpaceShip GetSpaceShip()
         {
-            return spaceObjects.Where(so => so.ObjectType == SpaceObjectType.SpaceShip).First() as SpaceShip;
+            return spaceObjects.Where(spaceObj => spaceObj.ObjectType == SpaceObjectType.SpaceShip).First() as SpaceShip;
         }
 
         public static void IncrementSpaceObjects()
         {
-            foreach (SpaceObject so in spaceObjects)
+            foreach (SpaceObject spaceObj in spaceObjects)
             {
-                switch (so.ObjectType)
+                switch (spaceObj.ObjectType)
                 {
                     default:
-                        so.Increment();
+                        spaceObj.Increment();
                         break;
                     case SpaceObjectType.Enemy:
-                        ((Enemy)so).Increment();
+                        ((Enemy)spaceObj).Increment();
                         break;
                     case SpaceObjectType.Bullet:
-                        ((Bullet)so).Increment();
+                        ((Bullet)spaceObj).Increment();
                         break;
                     case SpaceObjectType.SpaceShip:
-                        ((SpaceShip)so).Increment();
+                        ((SpaceShip)spaceObj).Increment();
                         break;
                 }
             }
 
-            if (r.NextDouble() > 0.7)
+            if (rand.NextDouble() > 0.7)
             {
                 AddSpaceObject(new Enemy());
             }
@@ -87,28 +87,38 @@ namespace SpaceGame
                 AddSpaceObject(new Enemy());
             }
 
-            foreach (SpaceObject so in spaceObjects)
+            foreach (SpaceObject spaceObj in spaceObjects)
             {
-                if (so.DisposeFlag == true)
+                if (spaceObj.DisposeFlag == true)
                 {
-                    spaceObjectsToRemove.Add(so);
+                    spaceObjectsToRemove.Add(spaceObj);
                     continue;
                 }
-                charDisplay[so.YPos, so.XPos] = so.Symbol;
+                charDisplay[spaceObj.YPos, spaceObj.XPos] = spaceObj.Symbol;
             }
 
 
 
-            foreach (SpaceObject so in spaceObjectsToRemove)
+            foreach (SpaceObject spaceObj in spaceObjectsToRemove)
             {
-                spaceObjects.Remove(so);
+                spaceObjects.Remove(spaceObj);
             }
 
             spaceObjectsToRemove.Clear();
         }
 
+        public static void PrintGameOver()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Clear();
+            Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n                                  GAME OVER");
+            Console.WriteLine("                 Click ESC to exit or Y to play again");
+        }
+
         public static void PrintDisplay()
         {
+            Console.ForegroundColor = ConsoleColor.White;
+
             display = "\n";
             for (int i = 0; i < ySize; i++)
             {
@@ -118,14 +128,13 @@ namespace SpaceGame
                 }
                 display += "\n";
             }
-            display += "\n";
-            display += "Score: " + Score;
-            display += "\n";
-            display += "Lives: " + Lives;
+            display += "\n\n";
+            display += "                          SCORE     |     LIVES\n";
+            display += "                            " + Score + "               " + Lives;
+
             if (Lives == 0)
             {
-                display += "\n";
-                display += "GAME OVER\nPress n to play again";
+                PrintGameOver();
             }
             Console.Clear();
             Console.WriteLine(display);
